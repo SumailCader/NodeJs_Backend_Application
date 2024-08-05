@@ -5,7 +5,7 @@ const sendEmail = require('./email');
 const generateWeatherText = require('./textGenerator');
 
 async function cronJob() {
-  cron.schedule('0 */3 * * *', async () => {
+  cron.schedule('* * * * *', async () => {
     const users = await User.find({});
     users.forEach(async (user) => {
       const weatherData = await getWeatherData(user.location.lat, user.location.lon);
